@@ -6,5 +6,5 @@ package com.builder;
  * 
  * */
 public class Builder {
-	
+	StringBuilder s;
 }
