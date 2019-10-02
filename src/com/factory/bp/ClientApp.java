@@ -3,7 +3,13 @@ package com.factory.bp;
 public class ClientApp {
 	public static void main(String[] args) {
 		BP batchProcessor = ClientApp.getBP(BPType.CSV);
+		batchProcessor.processBatch("csvInputFile");
+		
+		batchProcessor = ClientApp.getBP(BPType.TEXT);
 		batchProcessor.processBatch("textInputFile");
+		
+		batchProcessor = ClientApp.getBP(BPType.XML);
+		batchProcessor.processBatch("xmlInputFile");
 	}
 	
 	

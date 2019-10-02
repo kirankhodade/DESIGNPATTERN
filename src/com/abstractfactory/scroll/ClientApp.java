@@ -6,6 +6,14 @@ public class ClientApp {
 		bc.getScrollComponent("Left Scroller");
 		System.out.println(bc);
 		
+		bc = ClientApp.getScrollCompType(ScrollCompType.WINDOWS);
+		bc.getScrollComponent("Left Scroller");
+		System.out.println(bc);
+		
+		bc = ClientApp.getScrollCompType(ScrollCompType.MAC);
+		bc.getScrollComponent("Left Scroller");
+		System.out.println(bc);
+		
 	}
 	
 	//It is a static/simple factory, but NOT factory method design pattern as it does not conform to Gang of 4 definition : of let subclass decide which object to instantiate.
