@@ -4,6 +4,12 @@ public class ClientApp {
 	public static void main(String[] args) {
 		AbstractUIFactory ui = ClientApp.getUIPlatform(PlatformType.MAC);
 		ui.getUIComponent();
+		
+		ui = ClientApp.getUIPlatform(PlatformType.WINDOWS);
+		ui.getUIComponent();
+		
+		ui = ClientApp.getUIPlatform(PlatformType.LINUX);
+		ui.getUIComponent();
 	}
 	
 	//It is a static/simple factory, but NOT factory method design pattern as it does not conform to Gang of 4 definition : of let subclass decide which object to instantiate.

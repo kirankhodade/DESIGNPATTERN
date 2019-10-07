@@ -34,7 +34,11 @@ package com.abstractfactory;
 *    Windows implementation has : ConcreteWindowsUIFactory -->  (WindowsButtonComponent, WindowsButton) and (WindowsScrollComponent, WindowsScroll).
 *    MacOS implementation has : ConcreteMacUIFactory --> (MacButtonComponent, MacButton) and (MacScrollComponent, MacScroll)
 *    Linux implementation has : ConcreteLinuxUIFactory --> (LinuxButtonComponent, LinuxButton) and (LinuxScrollComponent, LinuxScroll)
+*   
 *    
+*    Difference between Factory method and Abstract factory pattern?
+*    The major difference between these two is, a factory pattern creates an object through inheritance and produces only one Product. 
+*    On the other hand, an abstract factory pattern creates the object through composition and produce families of products.
 */    
 public class AbstractFactory {
 

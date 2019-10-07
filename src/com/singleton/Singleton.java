@@ -4,6 +4,14 @@ import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 /*
+ * Design Patterns : 
+ * Types : 
+ * 1. Creational
+ * 2. Structural
+ * 3. Behavioural
+ * 1. Creational : deals with creation of object.
+ * 	Types of creational : Singleton, Builder, Prototype, Factory, Abstract Factory.
+ * 
  * Singleton class has only one instance and provides a global point of well-known access to it.
  * Singleton is Lazily loaded and thread-safe.
  * Flexibility(The Singleton class may be sub-classed, and it’s easy to configure an application with an instance of this extended class. 
@@ -18,7 +26,7 @@ import java.io.Serializable;
    Example : Runtime environment, GUI pop-up, Logger, Spring beans, Configuration file, Cache.
 					  
    How can we break Singleton instance?
-   Cloning : Resolved by Either not implementing Cloneable interface OR if we do implement Cloneable interface then overriding clone method and Either throwing CloneNotSupportedException or returning the SingletonInstance from clone method, as per our wish.
+   Cloning : Resolved by Either not implementing Cloneable interface OR if we do implement Cloneable interface then overriding clone method and Either throwing CloneNotSupportedException or returning the same SingletonInstance from clone method, as per our wish.
    Reflection : Can be resolved by lazily loading and applying check in constructor.
    Serialization/De-serialization : Resolved by overriding readResolve() Method and return singletonInstance.
    multi-threaded access : 
@@ -48,7 +56,8 @@ import java.io.Serializable;
    			  i.e half baked objects will not be seen by other objects, once change in object is complete then it will be published for other objects to consume. 
    			  i.e In java write to a volatile variable happens before read.
    			  
-   			  
+   	
+   TOP INTERVIEW QUESTIONS ON SINGLETON : https://javarevisited.blogspot.com/2011/03/10-interview-questions-on-singleton.html 
  * */
 
 public class Singleton implements Serializable, Cloneable{

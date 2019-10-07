@@ -14,6 +14,6 @@ public abstract class AbstractUIFactory {
 		bc = createButton();
 		sc = createScroll();
 		
-		System.out.println("AbstractFactory getUIComponent executed..."+this.bc+" :: "+this.sc);
+		System.out.println("AbstractFactory getUIComponent executed..."+this.bc+" :: "+this.sc+"\n");
 	}
 }

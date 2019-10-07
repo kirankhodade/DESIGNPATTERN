@@ -48,6 +48,14 @@ package com.prototype;
  * keyword new every time we want an object. And lastly, I would note don't always just jump to a factory. 
  * Look at a prototype to see if it will solve your problem with your current situation because a factory 
  * can often lead to other things that a prototype is nicely suited for.
+ * 
+ * Questions
+ * What is the benefit of using prototype design pattern over creating an instance using the new keyword?
+ * Sometimes, object creation is heavy-weight and requires a lot of resources, creating a new instance will impact the performance. 
+ * In such cases, a prototype design pattern is used which refers to creating duplicate objects. In prototype design pattern, 
+ * if a similar object is already present then cloning is done keeping performance in mind.
+ * 
+ * 
  * */
 public class PrototypePattern {
 

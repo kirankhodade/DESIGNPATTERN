@@ -12,7 +12,7 @@ public class ClientApp {
 		System.out.println(blogSite.getWebsitePages());
 	}
 	
-	//It is a static/simple factory, but NOT factory method design pattern as it does not conform to Gang of 4 definition : of let subclass decide which object to instantiate.
+	//Below method is a static/simple factory, but NOT factory method design pattern as it does not conform to Gang of 4 definition : of let subclass decide which object to instantiate.
 	public static Website getWebsite(WebsiteType siteType) {
 		switch(siteType) {
 			case BLOG : {

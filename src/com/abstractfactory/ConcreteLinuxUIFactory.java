@@ -9,12 +9,12 @@ public class ConcreteLinuxUIFactory extends AbstractUIFactory{
 
 	@Override
 	public ButtonComponent createButton() {
-		return new LinuxButtonComponent().getButtonComponent("Windows Button");
+		return new LinuxButtonComponent().getButtonComponent("Linux Button");
 	}
 
 	@Override
 	public ScrollComponent createScroll() {
-		return new LinuxScrollComponent().getScrollComponent("Windows Scroller");
+		return new LinuxScrollComponent().getScrollComponent("Linux Scroller");
 	}
 
 }
