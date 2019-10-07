@@ -27,7 +27,7 @@ package com.prototype;
  *        I do not want to create their instances every-time as it is costly. So, I will create their prototype instances, 
  *        and every-time when i will need a new instance, I will just clone the prototype.
  *        
- *    1 : create an e-commerce site application that will require instances of Movie and Book classes very frequently. 
+ *    2 : create an e-commerce site application that will require instances of Movie and Book classes very frequently. 
  *        I do not want to create their instances every-time as it is costly. So, I will create their prototype instances, 
  *        and every-time when i will need a new instance, I will just clone the prototype. 
  *   
