@@ -3,7 +3,7 @@ package com.builder;
 /*
  * Telescoping constructors : creation of multiple/overloaded constructors with each parameter variation is called telescoping constructors.
  * 
- * Builder Pattern : Is a great pattern for handling the construction of objects that may contain a lot of parameters, 
+ * Builder Pattern : Is a great pattern for handling the construction/creation of complex objects that may contain a lot of parameters, 
  * 					 and we want to make the object immutable once we're done constructing it.
  * 
  * What problem builder pattern solves?
