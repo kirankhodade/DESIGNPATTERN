@@ -14,7 +14,7 @@ import java.io.Serializable;
  * 
  * Singleton class has only one instance and provides a global point of well-known access to it.
  * Singleton is Lazily loaded and thread-safe.
- * Flexibility(The Singleton class may be sub-classed, and it’s easy to configure an application with an instance of this extended class. 
+ * Flexibility(The Singleton class may be sub-classed, and itâ€™s easy to configure an application with an instance of this extended class. 
  *             You can configure the application with an instance of the class you need at run-time.)
  * Provides controlled access.(i.e Singleton class encapsulates its instance, it can have strict control over how and when clients access it.)
  * Permits a variable number of instances.( i.e Singleton makes it easy to change your mind and allow more than one instance of the Singleton class. 
@@ -30,21 +30,19 @@ import java.io.Serializable;
    Reflection : Can be resolved by lazily loading and applying check in constructor.
    Serialization/De-serialization : Resolved by overriding readResolve() Method and return singletonInstance.
    multi-threaded access : 
-   							1. 	If we eagerly initialize(i.e objects are created at the time of class loading, then multi-threaded access problem does not arise.)
-   							2.  If we are lazily loading then by using volatile keyword and double-check locking mechanism,  multi-threaded access can be resolved.
+   	1. If we eagerly initialize(i.e objects are created at the time of class loading, then multi-threaded access problem does not arise.)
+   	2. If we are lazily loading then by using volatile keyword and double-check locking mechanism,  multi-threaded access can be resolved.
    Multiple class loaders --> In application servers multiple class loaders can create duplicate instances.
-    						  As certain class loaders may not bother looking at parent class loader context to see if instance is already initialized.
-   							  This problem is hard to fix. On Internet we do find some code fixes we can apply on our classes.
+    			      As certain class loaders may not bother looking at parent class loader context to see if instance is already initialized.
+   			      This problem is hard to fix. On Internet we do find some code fixes we can apply on our classes.
    							  
    							  
    Why not use class with static methods and variables instead of singleton?
-		   Well use it, But Singleton has its usage scenarios. 
-		   Also there special mention by gang of 4 that 
-		   	"Singleton instance being extensible by sub-classing and clients should be able to use an extended instance without modifying there code"  	
-		   Static makes it hard to change a design to allow more than one instance of a class. Moreover, static cannot be sub-classed and we can’t override them polymorphically.
+	Well use it, But Singleton has its usage scenarios. 
+	Also there special mention by gang of 4 that 
+	"Singleton instance being extensible by sub-classing and clients should be able to use an extended instance without modifying there code"  	
+	Static makes it hard to change a design to allow more than one instance of a class. Moreover, static cannot be sub-classed and we canâ€™t override them polymorphically.
 
-
-   
    What are different ways to create singleton instance?
    Lazily loading : Normal GetInstance method(using volatile and double check locking).
    Eagerly loading : Singleton with public static final field initialized during class loading.
@@ -53,8 +51,8 @@ import java.io.Serializable;
    
    
    Volatile : Change to volatile variable will be published, only when change is complete on that object.
-   			  i.e half baked objects will not be seen by other objects, once change in object is complete then it will be published for other objects to consume. 
-   			  i.e In java write to a volatile variable happens before read.
+   		i.e half baked objects will not be seen by other objects, once change in object is complete then it will be published for other objects to consume. 
+   		i.e In java write to a volatile variable happens before read.
    			  
    	
    TOP INTERVIEW QUESTIONS ON SINGLETON : https://javarevisited.blogspot.com/2011/03/10-interview-questions-on-singleton.html 
