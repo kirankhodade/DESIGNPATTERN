@@ -11,20 +11,17 @@ import java.io.Serializable;
  * 3. Behavioural
  * 1. Creational : deals with creation of object.
  * 	Types of creational : Singleton, Builder, Prototype, Factory, Abstract Factory.
- * 
- * Singleton class has only one instance and provides a global point of well-known access to it.
- * Singleton is Lazily loaded and thread-safe.
- * Flexibility(The Singleton class may be sub-classed, and it’s easy to configure an application with an instance of this extended class. 
- *             You can configure the application with an instance of the class you need at run-time.)
- * Provides controlled access.(i.e Singleton class encapsulates its instance, it can have strict control over how and when clients access it.)
- * Permits a variable number of instances.( i.e Singleton makes it easy to change your mind and allow more than one instance of the Singleton class. 
- *                                              Moreover, you can use the same approach to control the number of instances that the application uses. 
- *                                              Only the operation that grants access to the Singleton instance needs to change.
- *                                        )
- * Reduce name-space(i.e instead of having lots of global variables(eg: different configurations in applications)
-					  one singleton can be created of all the configurations and passed on.)
-   Example : Runtime environment, GUI pop-up, Logger, Spring beans, Configuration file, Cache.
-					  
+ 
+ * What is Singleton?
+	Singleton is a Creational Design Pattern and ensures that:
+		- Only one instance of a class exists.
+		- Provides a global access point to it.
+
+	When to Use Singleton?
+		- Shared resources: Logger, Configuration, Cache, Thread pools
+		- When exactly one object is required across application.
+		- Singleton approach can also be used to create variable fixed number of instances.
+				
    How can we break Singleton instance?
    Cloning : Resolved by Either not implementing Cloneable interface OR if we do implement Cloneable interface then overriding clone method and Either throwing CloneNotSupportedException or returning the same SingletonInstance from clone method, as per our wish.
    Reflection : Can be resolved by lazily loading and applying check in constructor.
@@ -43,19 +40,59 @@ import java.io.Serializable;
 	"Singleton instance being extensible by sub-classing and clients should be able to use an extended instance without modifying there code"  	
 	Static makes it hard to change a design to allow more than one instance of a class. Moreover, static cannot be sub-classed and we can’t override them polymorphically.
 
-   What are different ways to create singleton instance?
+What are different ways to create singleton instance?
    Lazily loading : Normal GetInstance method(using volatile and double check locking).
+   
    Eagerly loading : Singleton with public static final field initialized during class loading.
-   Static holder pattern.
-   Using Enum
-   
-   
-   Volatile : Change to volatile variable will be published, only when change is complete on that object.
-   		i.e half baked objects will not be seen by other objects, once change in object is complete then it will be published for other objects to consume. 
-   		i.e In java write to a volatile variable happens before read.
-   			  
+   	PROS : Simple and Thread-safe(class loading guarantees it)
+    Cons:  Instance created even if not used
+   	Example : 
+		public class Singleton { 
+			private static final Singleton INSTANCE = new Singleton(); 
+			private Singleton() {} 
+			public static Singleton getInstance() { return INSTANCE; } 
+		}
    	
-   TOP INTERVIEW QUESTIONS ON SINGLETON : https://javarevisited.blogspot.com/2011/03/10-interview-questions-on-singleton.html 
+   Static holder pattern(i.e. Bill Pugh Singleton).
+   		Pros: It achieves lazy loading without the performance overhead of synchronized blocks or the complexity of volatile.
+			  Thread-Safe : 
+			  	- The thread safety is guaranteed by the JVM through the Class Loading Process.
+				- The Class Initialization Guarantee : According to the Java Language Specification, the initialization of a class is guaranteed to be atomic and thread-safe.
+				- The inner class SingletonHelper is not loaded when the outer class BillPughSingleton is loaded. 
+				- It is only loaded when the getInstance() method is called for the first time. 
+				- This is because:
+						-> A SingletonHelper class is loaded only when it is actually referenced in getInstance() method.
+						-> SingletonHelper.INSTANCE in getInstance() method, is the first and only reference to the inner class.
+						-> And this loading is Thread-safe because of The Class Initialization Guarantee.
+		Example : 
+			public class BillPughSingleton {
+			    private BillPughSingleton() {}
+			
+			    // The "Holder" class
+			    private static class SingletonHelper {
+			        // Static final instance
+			        private static final BillPughSingleton INSTANCE = new BillPughSingleton();
+			    }
+			
+			    public static BillPughSingleton getInstance() {
+			        return SingletonHelper.INSTANCE;
+			    }
+			}
+			  
+   
+   Using Enum : 
+   		Example : 
+	   		enum DatabaseConnection {
+			    INSTANCE;
+			
+			    public void connect() {
+			        // Logic here
+			    }
+			}
+	Pros: Thread-safe by default
+	Prevents: Reflection attack, Serialization issues, Simple & robust
+👉 Recommended by Effective Java (Joshua Bloch)
+   		
  * */
 
 public class Singleton implements Serializable, Cloneable{
@@ -90,9 +127,6 @@ public class Singleton implements Serializable, Cloneable{
 		  
 		  return singletonInstance;
 		 
-		//Using Static holder pattern class : It works on lazy principle and provides thread safety, 
-		                                  //  but serialization/deserialization pitfall test fails so cannot use it.
-		/* return Holder.INSTANCE; */ 
 	}
 	
 	private Object readResolve() throws ObjectStreamException{
